@@ -2,10 +2,10 @@ from fastapi import APIRouter
 
 router = APIRouter()
 
-@router.get('/persons')
+@router.get('/')
 async def get_all_person():
     pass
 
-@router.get('/person/{description}')
-async def get_person(id:str):
+@router.get('/{description}')
+async def get_person(description:str):
     pass

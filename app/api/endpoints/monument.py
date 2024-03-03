@@ -2,10 +2,10 @@ from fastapi import APIRouter
 
 router = APIRouter()
 
-@router.get('/monuments')
+@router.get('/')
 async def get_all_monuments():
     pass
 
-@router.get('/monument/{description}')
+@router.get('/{description}')
 async def get_all_monuments(description:str):
     pass
