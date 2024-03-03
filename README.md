@@ -11,3 +11,8 @@ docker-compose -f infra/docker-compose.yaml up --build -d
 Приложение работает на `localhost:8080`  
 
 Документация `localhost:8080/docs`
+
+## Миграции
+```sh
+alembic upgrade head    
+```
