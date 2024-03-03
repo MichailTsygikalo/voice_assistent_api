@@ -21,5 +21,7 @@ def main_src(data:str):
 
     func_name = answer.split()[0]
     answer = answer.replace(func_name, '')
+
     full_answer = globals()[func_name]()
+
     return {'data':answer,'db_':full_answer}
