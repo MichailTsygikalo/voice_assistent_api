@@ -1,0 +1,11 @@
+version: '3.9'
+
+services:
+  app:
+    container_name: app
+    build: 
+      context: ..
+      dockerfile: ./infra/Dockerfile
+    command: python app/main.py
+    ports:
+     - 8080:8000
