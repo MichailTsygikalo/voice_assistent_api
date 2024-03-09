@@ -20,7 +20,7 @@ person = Table(
 )
 
 monument = Table(
-    'monumetn',
+    'monument',
     metadata,
     Column('id',Integer,primary_key=True),
     Column('name',String,nullable=False),
