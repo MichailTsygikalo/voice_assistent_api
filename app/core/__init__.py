@@ -1,2 +1,2 @@
-from core.source import get_all_monuments, get_all_person, get_person, get_monument
-from core.db import get_session, Monument, Person
+from core.source import get_all_monuments, get_all_person, get_person, get_monument, get_person_d, get_monument_d, get_mon_dataset, get_pers_dataset
+from core.db import get_session, Monument, Person, PersonDataset, MonumentDataset

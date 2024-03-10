@@ -28,6 +28,18 @@ class Query(Base):
     request = Column(String, nullable=False)
     response = Column(String, nullable=False)
 
+class PersonDataset(Base):
+    __tablename__ = 'dataset_person'
+    id = Column(Integer, primary_key=True)
+    key = Column(String, nullable=False)
+    value = Column(String, nullable=False)
+
+class MonumentDataset(Base):
+    __tablename__ = 'dataset_monument'
+    id = Column(Integer, primary_key=True)
+    key = Column(String, nullable=False)
+    value = Column(String, nullable=False)
+
 
 async def get_session():
     async with async_session() as session:
