@@ -28,3 +28,18 @@ monument = Table(
     Column('photo',String,nullable=False)
 )
 
+dataset_person = Table(
+    'dataset_person',
+    metadata,
+    Column('id',Integer,primary_key=True),
+    Column('key',String,nullable=False),
+    Column('value',String,nullable=False),
+)
+
+dataset_monument = Table(
+    'dataset_monument',
+    metadata,
+    Column('id',Integer,primary_key=True),
+    Column('key',String,nullable=False),
+    Column('value',String,nullable=False),
+)
