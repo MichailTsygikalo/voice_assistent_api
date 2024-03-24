@@ -9,6 +9,8 @@ services:
     command: python app/main.py
     ports:
      - 8080:8000
+    networks:
+      - mynetwork
 
   postgres_db:
     container_name: postgres
@@ -20,3 +22,9 @@ services:
       POSTGRES_PASSWORD: ${DB_POSTGRES_PASSWORD}
     ports:
       - "${DB_POSTGRES_PORT}:5432"
+    networks:
+      - mynetwork
+
+networks:
+  mynetwork:
+    driver: bridge
