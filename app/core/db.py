@@ -43,5 +43,5 @@ class MonumentDataset(Base):
 
 async def get_session():
     async with async_session() as session:
-        return session
+        yield session
 

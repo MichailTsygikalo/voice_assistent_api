@@ -29,7 +29,8 @@ def main_src(data:str):
 
 async def person_ai(text:str):
 
-    dataset = await get_pers_dataset(await get_session())
+    async for session in get_session():
+        dataset = await get_pers_dataset(session)
     dataset_person = {}
     for d in dataset:
         dataset_person[d.key] = d.value
@@ -43,11 +44,12 @@ async def person_ai(text:str):
     text_vector = vectorizer.transform([text]).toarray()[0]
     predict = clf.predict([text_vector])[0]
 
-    return await get_person_d(await get_session(), predict)
+    return await get_person_d(await get_session().__anext__(), predict)
 
 async def monument_ai(text:str):
 
-    dataset = await get_mon_dataset(await get_session())
+    async for session in get_session():
+        dataset = await get_mon_dataset(session)
     dataset_monument = {}
     for d in dataset:
         dataset_monument[d.key] = d.value
@@ -61,5 +63,5 @@ async def monument_ai(text:str):
     text_vector = vectorizer.transform([text]).toarray()[0]
     predict = clf.predict([text_vector])[0]
 
-    return await get_monument_d(await get_session(), predict)
+    return await get_monument_d(await get_session().__anext__(), predict)
 

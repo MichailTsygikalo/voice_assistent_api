@@ -9,14 +9,18 @@ router = APIRouter()
 
 @router.get('/',)
 async def get_monuments()->ShowMonument:
-    monuments = await get_all_monuments(await get_session())
+    monuments = []
+    async for session in get_session():
+        monuments.extend(await get_all_monuments(session))
     monuments_data = [m.__dict__ for m in monuments]
-    return {'monuments':monuments_data}
+    return {'monuments': monuments_data}
 
 @router.get('/{id}')
 async def get_monuments(id:int)->Optional[Monument]:
-    monument = await get_monument(await get_session(), id)
+    async for session in get_session():
+        monument = await get_monument(session, id)
     return monument
+
 
 @router.get('/ai/{text}')
 async def get_monuments(text:str)->Optional[Monument]:
