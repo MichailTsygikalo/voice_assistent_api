@@ -6,11 +6,13 @@ services:
     build: 
       context: ..
       dockerfile: ./infra/Dockerfile
-    command: python app/main.py
+    command: sh -c "alembic upgrade head && python app/main.py"
     ports:
      - 8080:8000
     networks:
       - mynetwork
+    depends_on:
+      - postgres_db
 
   postgres_db:
     container_name: postgres
