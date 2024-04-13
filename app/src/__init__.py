@@ -1,1 +1,1 @@
-from src.main_src import main_src as ai, person_ai, monument_ai
+from src.main_src import main_src as ai, person_ai, monument_ai, page

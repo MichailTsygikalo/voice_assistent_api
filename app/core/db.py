@@ -40,6 +40,16 @@ class MonumentDataset(Base):
     key = Column(String, nullable=False)
     value = Column(String, nullable=False)
 
+class Page(Base):
+    __tablename__ = 'page'
+    id = Column(Integer, primary_key=True)
+    route = Column(String, nullable=False)
+
+class PageDataset(Base):
+    __tablename__ = 'page_dataset'
+    id = Column(Integer, primary_key=True)
+    key = Column(String, nullable=False)
+    value = Column(String, nullable=False)
 
 async def get_session():
     async with async_session() as session:

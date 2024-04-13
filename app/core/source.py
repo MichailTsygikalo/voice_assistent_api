@@ -43,3 +43,13 @@ async def get_mon_dataset(session:AsyncSession)->list[MonumentDataset]:
     result = await session.execute(select(MonumentDataset))
     monument = result.scalars().all()
     return monument
+
+async def get_page_router(session:AsyncSession, id:int)->Optional[Page]:
+    result = await session.execute(select(Page).filter_by(Page.id == id))
+    page = result.scalars().all()
+    return page
+
+async def get_page_dataset(session:AsyncSession)->Optional[list[PageDataset]]:
+    result = await session.execute(select(PageDataset))
+    page = result.scalars().all()
+    return page

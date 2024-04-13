@@ -3,7 +3,7 @@ from sklearn.linear_model import LogisticRegression
 
 from src import words
 from src.func import *
-from core import get_session, get_person_d, get_monument_d, get_pers_dataset, get_mon_dataset
+from core import get_session, get_person_d, get_monument_d, get_pers_dataset, get_mon_dataset, get_page_router, get_page_dataset
 
 def main_src(data:str):
 
@@ -65,3 +65,21 @@ async def monument_ai(text:str):
 
     return await get_monument_d(await get_session().__anext__(), predict)
 
+async def page(text:str):
+
+    async for session in get_session():
+        dataset = await get_mon_dataset(session)
+    dataset_page = {}
+    for d in dataset:
+        dataset_page[d.key] = d.value
+
+    vectorizer = CountVectorizer()
+    vectors = vectorizer.fit_transform(list(dataset_page.keys()))
+
+    clf = LogisticRegression()
+    clf.fit(vectors, list(dataset_page.values()))
+
+    text_vector = vectorizer.transform([text]).toarray()[0]
+    predict = clf.predict([text_vector])[0]
+
+    return await get_page_router(await get_session().__anext__(), predict)
