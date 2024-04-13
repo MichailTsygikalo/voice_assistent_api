@@ -43,3 +43,10 @@ dataset_monument = Table(
     Column('key',String,nullable=False),
     Column('value',String,nullable=False),
 )
+
+page = Table(
+    'page',
+    metadata,
+    Column('id',Integer, primary_key=True),
+    Column('route',String, nullable=False)
+)
