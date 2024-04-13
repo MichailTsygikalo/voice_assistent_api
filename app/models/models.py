@@ -50,3 +50,11 @@ page = Table(
     Column('id',Integer, primary_key=True),
     Column('route',String, nullable=False)
 )
+
+dataset_page = Table(
+    'dataset_page',
+    metadata,
+    Column('id',Integer, primary_key=True),
+    Column('key',String, nullable=False),
+    Column('value',String,nullable=False),
+)
